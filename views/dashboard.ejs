@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f4f4f4;
+      padding: 30px;
+    }
+    h1 { color: #333; }
+    ul {
+      background: white;
+      padding: 10px;
+      list-style: none;
+      border-radius: 10px;
+    }
+    li { margin: 5px 0; }
+    a {
+      text-decoration: none;
+      color: white;
+      background-color: #007bff;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+    a:hover { background-color: #0056b3; }
+  </style>
+</head>
+<body>
+  <h1>📊 Dashboard</h1>
+
+  <h3>Available Databases:</h3>
+  <ul>
+    <% databases.forEach(db => { %>
+      <li><%= db.Database %></li>
+    <% }) %>
+  </ul>
+
+  <hr>
+  <h3>Actions:</h3>
+  <a href="/add-db">➕ Add Database</a>
+  <a href="/add-user">👤 Add User</a>
+  <a href="/create-table">📋 Create Table</a>
+</body>
+</html>

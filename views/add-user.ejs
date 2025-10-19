@@ -1,0 +1,11 @@
+<h2>Add User</h2>
+<form action="/add-user" method="POST">
+  <input name="username" placeholder="Username" />
+  <input name="password" type="password" placeholder="Password" />
+  <select name="dbname">
+    <% dbs.forEach(d => { %>
+      <option value="<%= d.Database %>"><%= d.Database %></option>
+    <% }) %>
+  </select>
+  <button type="submit">Create User</button>
+</form>

@@ -1,0 +1,11 @@
+<h2>Create Table</h2>
+<form action="/create-table" method="POST">
+  <select name="dbname">
+    <% dbs.forEach(d => { %>
+      <option value="<%= d.Database %>"><%= d.Database %></option>
+    <% }) %>
+  </select>
+  <input name="tablename" placeholder="Table name" />
+  <input name="columns" placeholder="Columns e.g. id INT, name VARCHAR(50)" />
+  <button type="submit">Create</button>
+</form>
