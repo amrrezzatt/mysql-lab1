@@ -15,23 +15,20 @@ app.use(session({
   saveUninitialized: true
 }));
 
-// ✅ هنا الاتصال بـ MySQL
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '12345' // ← نفس الباسورد اللي عملته فوق
+  password: '12345' 
 });
 
-// ✅ اختبار الاتصال
 connection.connect(err => {
   if (err) {
-    console.error('❌ MySQL connection error:', err);
+    console.error(' MySQL connection error:', err);
   } else {
-    console.log('✅ Connected to MySQL successfully');
+    console.log(' Connected to MySQL successfully');
   }
 });
 
-// ✅ صفحة تسجيل الدخول
 app.get('/', (req, res) => {
   res.render('login');
 });
@@ -46,7 +43,6 @@ app.post('/login', (req, res) => {
   }
 });
 
-// ✅ عرض قاعدة البيانات والمستخدمين
 app.get('/dashboard', (req, res) => {
   if (!req.session.loggedin) return res.redirect('/');
   connection.query('SHOW DATABASES', (err, dbs) => {
@@ -58,7 +54,6 @@ app.get('/dashboard', (req, res) => {
   });
 });
 
-// ✅ صفحة إضافة قاعدة بيانات
 app.get('/add-db', (req, res) => {
   if (!req.session.loggedin) return res.redirect('/');
   res.render('add-db');
@@ -89,7 +84,6 @@ app.post('/add-user', (req, res) => {
   });
 });
 
-// ✅ صفحة إنشاء جدول
 app.get('/create-table', (req, res) => {
   connection.query('SHOW DATABASES', (err, dbs) => {
     if (err) return res.send(err);
